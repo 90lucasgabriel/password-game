@@ -8,13 +8,16 @@ import { Badge } from '@material-ui/core';
 function AnswerList() {
   const answers = useSelector((state) => state.answer.list);
 
-  console.log('state', answers);
   return (
     <>
       {answers.map((answer, index) => (
-        <div className="answerWrapper">
-        <Badge className="badge" badgeContent={answers.length - index} color="primary" />
-        <Answer key={answer} {...answer} />
+        <div key={answer.value} className='answerWrapper'>
+          <Badge
+            className='badge'
+            badgeContent={answers.length - index}
+            color='primary'
+          />
+          <Answer {...answer} />
         </div>
       ))}
     </>

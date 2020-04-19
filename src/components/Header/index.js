@@ -9,7 +9,6 @@ function Header() {
   const dispatch = useDispatch();
 
   function newGame() {
-    console.log('New Game');
     dispatch(
       resetAnswerAction()
     );

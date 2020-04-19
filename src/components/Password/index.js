@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Button, Fab } from '@material-ui/core';
-import { addAnswerAction, resetAnswerAction } from '../../redux/actions/AnswerAction';
+import {
+  addAnswerAction,
+  resetAnswerAction,
+} from '../../redux/actions/AnswerAction';
 
 import './style.css';
-import AlertDialog from '../Dialog';
 
 var password = '';
 function Password() {
@@ -18,16 +20,6 @@ function Password() {
   let right = 0;
   let wrongPosition = 0;
   let wrong = 0;
-
-  useEffect(() => {
-    if (answers.length === 0) {
-      newGame();
-    }
-    console.log('password', password);
-    console.log('randomUserPassword', userPassword);
-
-    reset();
-  }, [answers, password]);
 
   function addAnswer(p) {
     if (p.length === 3) {
@@ -97,7 +89,6 @@ function Password() {
   function passwordGenerate(length) {
     var result = '';
     var characters = '0123456789';
-    var charactersLength = characters.length;
     for (var i = 0; i < length; i++) {
       const index = Math.floor(Math.random() * characters.length);
       const character = characters.charAt(index);
@@ -106,6 +97,14 @@ function Password() {
     }
     return result;
   }
+
+  useEffect(() => {
+    if (answers.length === 0) {
+      newGame();
+    }
+
+    reset();
+  }, [answers, newGame, reset]);
 
   return (
     <div className='passwordWrapper'>
@@ -126,8 +125,7 @@ function Password() {
       >
         Verificar Senha
       </Button>
-      
-      
+
       {finished ? (
         <Fab
           className='showAnswer'

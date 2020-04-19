@@ -10,8 +10,6 @@ import { store } from './redux/Store';
 import AnswerList from './components/AnswerList';
 
 function App() {
-  // const [getRandomPassword, addAnswer, answers, password] = PasswordService();
-
   useEffect(() => {}, []);
 
   return (
