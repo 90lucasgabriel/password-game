@@ -1,0 +1,13 @@
+ul {
+  margin: 0;
+}
+
+.answerWrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.badge {
+  position: absolute !important;
+  right: 0;
+}
