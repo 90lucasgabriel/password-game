@@ -23,6 +23,9 @@ function Password() {
 
   function addAnswer(p) {
     if (p.length === 3) {
+      if(answers.find(a => a.value === p)) {
+        return alert('Essa senha já foi inserida.')
+      }
       checkPasswords(p);
       dispatch(addAnswerAction({ value: p, right, wrongPosition, wrong }));
       document.getElementById('passwordInput').focus();
@@ -127,25 +130,14 @@ function Password() {
         Verificar Senha
       </Button>
 
-      {finished ? (
-        <Fab
-          className='showAnswer'
-          variant='extended'
-          color='secondary'
-          onClick={newGame}
-        >
-          Novo Jogo
-        </Fab>
-      ) : (
-        <Fab
-          className='showAnswer'
-          variant='extended'
-          color='primary'
-          onClick={() => alert(`A senha é: ${password}`)}
-        >
-          Resposta
-        </Fab>
-      )}
+      <Fab
+        className='showAnswer'
+        variant='extended'
+        color={finished ? 'secondary' : 'primary'}
+        onClick={finished ? newGame : () => alert(`A senha é: ${password}`)}
+      >
+        {finished ? 'Novo Jogo' : 'Resposta'}
+      </Fab>
     </div>
   );
 }
