@@ -15,7 +15,7 @@ function Header() {
   }
   return (
     <Paper className='toolbar' elevation={3}>
-      <div>JOGO DA SENHA</div>
+      <div>Descubra a Senha</div>
       <Button className='newGameButton' onClick={newGame}>Novo Jogo</Button>
     </Paper>
   );
