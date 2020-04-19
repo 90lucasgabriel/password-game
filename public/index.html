@@ -19,6 +19,7 @@
         align-items: center;
         justify-content: center;
         display: flex;
+        flex-direction: column;
         height: 100vh;
       }
     </style>
@@ -38,33 +39,14 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-      <p class="loading">
-        Carregando
-      </p>
+      <div class="loading">
+        <div>
+          <img src="loading.svg" />
+        </div>
+        <div>
+          Carregando
+        </div>
+      </div>
     </div>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-          navigator.serviceWorker
-            .register('worker.js')
-            .then(
-              function (registration) {
-                console.log(
-                  'Worker registration successful',
-                  registration.scope
-                );
-              },
-              function (err) {
-                console.log('Worker registration failed', err);
-              }
-            )
-            .catch(function (err) {
-              console.log(err);
-            });
-        });
-      } else {
-        console.log('Service Worker is not supported by browser.');
-      }
-    </script>
   </body>
 </html>
