@@ -1,0 +1,49 @@
+.passwordWrapper {
+  padding: 20px;
+}
+
+.password {
+  font-size: 80px;
+  letter-spacing: 26px;
+  text-align: center;
+  height: 96px;
+  width: 100%;
+  color: #333;
+  border-radius: 10px;
+  border: 1px solid #999;
+}
+
+.checkButton {
+  width: 100% !important;
+  margin-top: 20px !important;
+}
+
+.showAnswer {
+  position: absolute !important;
+  z-index: 2;
+  bottom: 10px;
+  right: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: #e0e0e0;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #e0e0e0;
+}
+
+::placeholder {
+  color: #e0e0e0;
+}

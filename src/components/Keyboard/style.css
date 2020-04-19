@@ -1,0 +1,9 @@
+.keyboardWrapper {
+  bottom: 0;
+}
+
+.keyboardNumber {
+  width: 20%;
+  border-radius: 0 !important;
+  font-size: xx-large !important;
+}
