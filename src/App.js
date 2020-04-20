@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 
 import { store } from './redux/Store';
 import AnswerList from './components/AnswerList';
+import AdSense from 'react-adsense';
 
 function App() {
   useEffect(() => {}, []);
