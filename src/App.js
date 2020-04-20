@@ -14,11 +14,13 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div className='App'>
-        <Header className='header' />
-        <Password className='password' />
-        <div className='hints'>
-          <AnswerList />
+      <div className='appWrapper'>
+        <div className='app'>
+          <Header className='header' />
+          <Password className='password' />
+          <div className='hints'>
+            <AnswerList />
+          </div>
         </div>
       </div>
     </Provider>
