@@ -3,9 +3,8 @@
 }
 
 .appWrapper {
-  min-height: 100vh;
-  max-height: 100vh;
-  display: flex;
+  position: absolute;
+  height: 100%;
 }
 
 .app {
