@@ -2,11 +2,19 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 
 import './style.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetAnswerAction } from '../../redux/actions/AnswerAction';
 
 function Header() {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
+  const { password } = useSelector((state) => state.answer);
+
+  const showAnswer = () => {
+    console.log('resposta', password)
+    alert(`A senha é: ${password}`);
+  };
 
   const newGame = () => {
     dispatch(resetAnswerAction());
@@ -14,7 +22,9 @@ function Header() {
 
   return (
     <div className='toolbar' elevation={3}>
-      <div>Descubra a Senha</div>
+      <Button className='newGameButton' onClick={showAnswer}>
+        Resposta
+      </Button>
       <Button className='newGameButton' onClick={newGame}>
         Novo Jogo
       </Button>

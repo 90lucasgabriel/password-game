@@ -22,7 +22,7 @@ const Password = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  const { list: answers, value: currentValue, password } = useSelector(
+  const { list: answers, value: currentValue } = useSelector(
     (state) => state.answer
   );
   const { gameOver } = useSelector((state) => state.game);
@@ -102,14 +102,16 @@ const Password = () => {
         <div className='topBackground'></div>
       </div>
 
-      <Fab
-        className='showAnswer'
-        variant='extended'
-        color={gameOver ? 'secondary' : 'primary'}
-        onClick={gameOver ? newGame : () => alert(`A senha é: ${password}`)}
-      >
-        {gameOver ? 'Novo Jogo' : 'Resposta'}
-      </Fab>
+      {gameOver ? (
+        <Fab
+          className='showAnswer'
+          variant='extended'
+          color='secondary'
+          onClick={newGame}
+        >
+          Novo Jogo
+        </Fab>
+      ) : null}
     </>
   );
 };

@@ -2,8 +2,6 @@
   bottom: 0;
   display: flex;
   width: 100%;
-  border-radius: 30px 30px 0 0;
-  overflow: hidden;
 }
 
 .keyboardActionWrapper {
@@ -22,11 +20,21 @@
   min-width: 40px !important;
 }
 
-.keyboardActionLeft span{
+.keyboardActionLeft {
+  overflow: hidden;
+  border-radius: 30px 0 0 0;
+}
+
+.keyboardActionRight {
+  overflow: hidden;
+  border-radius: 0 30px 0 0;
+}
+
+.keyboardActionLeft span {
   justify-content: flex-end;
 }
 
-.keyboardActionRight span{
+.keyboardActionRight span {
   justify-content: flex-start;
 }
 
@@ -36,6 +44,10 @@
 
 .keyboardNumberRowWrapper {
   display: flex;
+}
+
+.keyboardNumberRowWrapper:last-child {
+  height: 60px;
 }
 
 .keyboardNumber {
