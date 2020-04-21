@@ -15,4 +15,6 @@
 
 .newGameButton {
   color: #FFFFFF !important;
+  background: rgb(0,0,0, 0.07) !important;
+  border-radius: 20px !important;
 }

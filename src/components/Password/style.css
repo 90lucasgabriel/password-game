@@ -22,11 +22,6 @@
   border-radius: 0 0 30% 30%;
 }
 
-.topBackgroundGameOver {
-  background-color: #43A7A7;
-  color: #FF0;
-}
-
 .password {
   font-size: 80px;
   letter-spacing: 26px;
@@ -40,6 +35,10 @@
   border: none;
   background: transparent;
   z-index: 2;
+}
+
+.rightPassword {
+  color: #ffd900;
 }
 
 .emptyPassword {

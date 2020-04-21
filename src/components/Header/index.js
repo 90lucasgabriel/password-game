@@ -22,10 +22,10 @@ function Header() {
 
   return (
     <div className='toolbar' elevation={3}>
-      <Button className='newGameButton' onClick={showAnswer}>
+      <Button className='newGameButton' size='small' onClick={showAnswer}>
         Resposta
       </Button>
-      <Button className='newGameButton' onClick={newGame}>
+      <Button className='newGameButton' size='small' onClick={newGame}>
         Novo Jogo
       </Button>
     </div>
