@@ -67,7 +67,7 @@ function Keyboard() {
 
   return (
     <div className='keyboardWrapper'>
-      <div className='keyboardActionWrapper'>
+      <div className='keyboardActionWrapper keyboardActionLeft'>
         <Button
           className='keyboardAction'
           color='secondary'
@@ -114,7 +114,7 @@ function Keyboard() {
         </div>
       </div>
 
-      <div className='keyboardActionWrapper'>
+      <div className='keyboardActionWrapper keyboardActionRight'>
         <Button
           className='keyboardAction'
           color='secondary'
