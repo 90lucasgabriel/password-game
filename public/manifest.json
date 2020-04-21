@@ -1,8 +1,8 @@
 {
   "name": "Descubra a Senha",
   "short_name": "Password Game",
-  "theme_color": "#3e51b5",
-  "background_color": "#3e51b5",
+  "theme_color": "#43A7A7",
+  "background_color": "#43A7A7",
   "display": "standalone",
   "orientation": "portrait",
   "start_url": ".",
