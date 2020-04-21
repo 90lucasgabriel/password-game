@@ -1,11 +1,41 @@
 .keyboardWrapper {
   bottom: 0;
+  display: flex;
   width: 100%;
 }
 
-.keyboardNumber {
-  width: 15%;
+.keyboardActionWrapper {
+  display: flex;
+  /* flex: 1; */
+}
+
+.keyboardAction {
   border-radius: 0 !important;
   font-size: large !important;
   border: none !important;
+  line-height: 24px !important;
+  box-shadow: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  min-width: 40px !important;
+}
+
+.keyboardNumberWrapper {
+  flex: 1;
+}
+
+.keyboardNumberRowWrapper {
+  display: flex;
+}
+
+.keyboardNumber {
+  border-radius: 0 !important;
+  font-size: large !important;
+  border: none !important;
+  line-height: 24px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  min-width: auto !important;
+  flex: 1 !important;
+  box-shadow: none !important;
 }

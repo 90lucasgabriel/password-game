@@ -8,10 +8,8 @@ import { Provider } from 'react-redux';
 
 import { store } from './redux/Store';
 import AnswerList from './components/AnswerList';
-import AdSense from 'react-adsense';
 
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
-import { purple } from '@material-ui/core/colors';
 import Keyboard from './components/Keyboard';
 
 const theme = createMuiTheme({

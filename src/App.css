@@ -18,7 +18,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #010926;
+  /* background-color: #010926; */
+  /* background-color: #78dba8; */
+  background-color: #78dba8;
   overflow: hidden;
   box-sizing: border-box;
 }

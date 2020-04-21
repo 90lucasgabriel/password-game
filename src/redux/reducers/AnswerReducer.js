@@ -2,6 +2,8 @@ export default function reducer(
   state = {
     list: [],
     value: '',
+    password: '',
+    gameOver: false,
   },
   action
 ) {
@@ -17,6 +19,20 @@ export default function reducer(
       return {
         ...state,
         value: `${state.value}${action.payload}`,
+      };
+    }
+
+    case 'ADD_PASSWORD': {
+      return {
+        ...state,
+        password: action.payload,
+      };
+    }
+
+    case 'GAME_OVER': {
+      return {
+        ...state,
+        gameOver: action.payload,
       };
     }
 

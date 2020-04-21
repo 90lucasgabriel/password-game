@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import answer from './reducers/AnswerReducer';
+import { answer, game } from './reducers';
 
 const appReducer = combineReducers({
   answer,
+  game,
 });
 
 const rootReducer = (state, action) => {

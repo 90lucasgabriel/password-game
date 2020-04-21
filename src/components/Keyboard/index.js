@@ -1,73 +1,130 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 import BackspaceOutlinedIcon from '@material-ui/icons/BackspaceOutlined';
+import CheckCircleOutlineOutlinedIcon from '@material-ui/icons/CheckCircleOutlineOutlined';
 
 import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addValueAction, resetValueAction, addAnswerAction } from '../../redux/actions/AnswerAction';
+import {
+  addValueAction,
+  resetValueAction,
+  addAnswerAction,
+} from '../../redux/actions/AnswerAction';
+import { gameOverAction } from '../../redux/actions/GameAction';
+
+import { PasswordService } from '../../services';
 
 function Keyboard() {
-  const values = ['1', '2', '3', '4', '5', '<', '6', '7', '8', '9', '0', 'ok'];
-  const { list: answers, value: currentValue } = useSelector((state) => state.answer);
+  const values = [
+    ['1', '2', '3', '4', '5'],
+    ['6', '7', '8', '9', '0'],
+  ];
+
   const dispatch = useDispatch();
+  const { list: answers, value: currentValue, password } = useSelector(
+    (state) => state.answer
+  );
+  const { gameOver } = useSelector((state) => state.game);
 
+  const resetValue = () => {
+    return dispatch(resetValueAction());
+  };
 
-  let right = 0;
-  let wrongPosition = 0;
-  let wrong = 0;
+  const addAnswer = () => {
+    if (gameOver) {
+      return;
+    }
+
+    const result = PasswordService.AddAnswer({
+      password,
+      answers,
+      currentValue,
+    });
+
+    if (result) {
+      if (result.right === 3) {
+        alert(`Parabéns!! Você acertou em ${answers.length} tentativas`);
+        return dispatch(gameOverAction(true));
+      }
+
+      dispatch(addAnswerAction(result));
+      dispatch(resetValueAction());
+    }
+    return;
+  };
 
   const addValue = (value) => {
-    if(value === '<') {
-      return dispatch(resetValueAction());  
+    if (gameOver) {
+      return;
     }
 
-    if(value === 'ok') {
-      if(currentValue.length === 3){
-        return dispatch(addAnswerAction({ value: currentValue, right: 2, wrongPosition: 1, wrong: 0 }));
-
-        // return dispatch(addAnswerAction(currentValue))
-      }
+    if (currentValue.includes(value) || currentValue.length === 3) {
+      return;
     }
+
     return dispatch(addValueAction(value));
-  }
-
-  // const checkPasswords = (p) => {
-  //   checkHints(p);
-  //   if (password === p) {
-  //     alert(`Parabéns!! Você acertou em ${answers.length} tentativas.`);
-  //     document.getElementById('passwordInput').disabled = true;
-  //     return;
-  //   }
-  // };
-
-  // const checkHints = (p) => {
-  //   const userPasswordArray = p.split('');
-
-  //   userPasswordArray.map((character, index) => {
-  //     if (password.includes(character)) {
-  //       if (password.indexOf(character) === index) {
-  //         return right++;
-  //       }
-  //       return wrongPosition++;
-  //     }
-  //     return wrong++;
-  //   });
-  // };
+  };
 
   return (
     <div className='keyboardWrapper'>
-      {values.map((value) => (
+      <div className='keyboardActionWrapper'>
         <Button
-          className='keyboardNumber'
+          className='keyboardAction'
           color='secondary'
           variant='contained'
           size='large'
-          key={value}
-          onClick={(e) => addValue(value)}
+          onClick={resetValue}
         >
-          {value}
+          <BackspaceOutlinedIcon />
         </Button>
-      ))}
+      </div>
+
+      <div className='keyboardNumberWrapper'>
+        <div className='keyboardNumberRowWrapper'>
+          {values[0].map((value) => {
+            return (
+              <Button
+                className='keyboardNumber'
+                color='secondary'
+                variant='contained'
+                size='large'
+                key={value}
+                onClick={(e) => addValue(value)}
+              >
+                {value}
+              </Button>
+            );
+          })}
+        </div>
+        <div className='keyboardNumberRowWrapper'>
+          {values[1].map((value) => {
+            return (
+              <Button
+                className='keyboardNumber'
+                color='secondary'
+                variant='contained'
+                size='large'
+                key={value}
+                onClick={(e) => addValue(value)}
+              >
+                {value}
+              </Button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className='keyboardActionWrapper'>
+        <Button
+          className='keyboardAction'
+          color='secondary'
+          variant='contained'
+          size='large'
+          onClick={addAnswer}
+        >
+          <CheckCircleOutlineOutlinedIcon />
+        </Button>
+      </div>
     </div>
   );
 }

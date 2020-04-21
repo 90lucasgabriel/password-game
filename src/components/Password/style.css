@@ -11,10 +11,11 @@
 
 .topBackground {
   position: absolute;
-  background-color: #041641;
+  /* background-color: #041641; */
+  background-color: #379b68;
   width: 100%;
   height: 200%;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   z-index: 1;
   border-radius: 0 0 30% 30%;
