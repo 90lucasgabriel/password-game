@@ -1,9 +1,11 @@
 .keyboardWrapper {
   bottom: 0;
+  width: 100%;
 }
 
 .keyboardNumber {
-  width: 20%;
+  width: 15%;
   border-radius: 0 !important;
-  font-size: xx-large !important;
+  font-size: large !important;
+  border: none !important;
 }

@@ -5,14 +5,18 @@ import { Button, Fab } from '@material-ui/core';
 import {
   addAnswerAction,
   resetAnswerAction,
+  addValueAction,
 } from '../../redux/actions/AnswerAction';
+
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
 
 import './style.css';
 
 var password = '';
 function Password() {
   const dispatch = useDispatch();
-  const answers = useSelector((state) => state.answer.list);
+  const { list: answers, value: currentValue } = useSelector((state) => state.answer);
 
   const [userPassword, setUserPassword] = useState('');
   const [finished, setFinished] = useState(false);
@@ -23,12 +27,11 @@ function Password() {
 
   function addAnswer(p) {
     if (p.length === 3) {
-      if(answers.find(a => a.value === p)) {
-        return alert('Essa senha já foi inserida.')
+      if (answers.find((a) => a.value === p)) {
+        return alert('Essa senha já foi inserida.');
       }
       checkPasswords(p);
       dispatch(addAnswerAction({ value: p, right, wrongPosition, wrong }));
-      document.getElementById('passwordInput').focus();
     }
   }
 
@@ -36,6 +39,7 @@ function Password() {
     right = 0;
     wrongPosition = 0;
     wrong = 0;
+    dispatch(addValueAction(''));
     setUserPassword('');
   };
 
@@ -43,7 +47,6 @@ function Password() {
     setFinished(false);
     dispatch(resetAnswerAction());
     password = passwordGenerate(3);
-    document.getElementById('passwordInput').disabled = false;
     addAnswer(passwordGenerate(3));
   }
 
@@ -59,10 +62,12 @@ function Password() {
         return;
       }
 
-      setUserPassword(value);
+      dispatch(addValueAction(value));
+      // setUserPassword(value);
     }
-
-    setUserPassword(value);
+    
+    dispatch(addValueAction(value));
+    // setUserPassword(value);
   };
 
   const checkPasswords = (p) => {
@@ -110,25 +115,33 @@ function Password() {
   }, [answers]);
 
   return (
-    <div className='passwordWrapper'>
-      <input
-        className='password'
-        type='tel'
-        maxLength='3'
-        value={userPassword}
-        placeholder='000'
-        id='passwordInput'
-        autoComplete='new-password'
-        onChange={(e) => checkUserPassword(e.target.value)}
-      />
-      <Button
-        color='secondary'
-        variant='outlined'
-        className='checkButton'
-        onClick={() => addAnswer(userPassword)}
-      >
-        Verificar Senha
-      </Button>
+    <>
+      <div className='passwordWrapper'>
+        <div className='inputsWrapper'>
+          <input
+            className={currentValue.length > 0 ? 'password' : 'emptyPassword'}
+            type='tel'
+            maxLength='3'
+            placeholder='Digite uma senha com 3 dígitos diferentes.'
+            id='passwordInput'
+            autoComplete='new-password'
+            value={currentValue}
+            onChange={(e) => checkUserPassword(e.target.value)}
+            disabled={true}
+          />
+          <Button
+            color='secondary'
+            variant='contained'
+            className='checkButton'
+            onClick={() => addAnswer(userPassword)}
+            startIcon={<LockOutlinedIcon />}
+          >
+            <span className='checkButtonText'>Verificar Senha</span>
+          </Button>
+        </div>
+
+        <div className='topBackground'></div>
+      </div>
 
       <Fab
         className='showAnswer'
@@ -138,7 +151,7 @@ function Password() {
       >
         {finished ? 'Novo Jogo' : 'Resposta'}
       </Fab>
-    </div>
+    </>
   );
 }
 

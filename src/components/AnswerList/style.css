@@ -4,10 +4,11 @@ ul {
 
 .answerWrapper {
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .badge {
   position: absolute !important;
-  right: 0;
+  right: 15px;
+  top: 15px;
 }

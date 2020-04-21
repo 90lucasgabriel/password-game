@@ -15,7 +15,7 @@ function AnswerList() {
           <Badge
             className='badge'
             badgeContent={answers.length - index}
-            color='primary'
+            color='secondary'
           />
           <Answer {...answer} />
         </div>

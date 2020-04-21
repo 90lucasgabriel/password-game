@@ -1,27 +1,71 @@
 .passwordWrapper {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
+  position: relative;
+  width: 100%;
+}
+
+.inputsWrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.topBackground {
+  position: absolute;
+  background-color: #041641;
+  width: 100%;
+  height: 200%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 0 0 30% 30%;
 }
 
 .password {
   font-size: 80px;
   letter-spacing: 26px;
   text-align: center;
+  padding-left: 10px;
   height: 96px;
   width: 100%;
-  color: #333;
-  border-radius: 10px;
-  border: 1px solid #999;
+  color: #fff;
+  background-color: #02123c;
+  border-radius: 20px;
+  /* border: 1px solid #999; */
+  border: none;
+  background: transparent;
+  z-index: 2;
 }
 
+.emptyPassword {
+  font-size: 12px;
+  text-align: center;
+  height: 96px;
+  width: 100%;
+  color: #fff;
+  background-color: #02123c;
+  border-radius: 20px;
+  /* border: 1px solid #999; */
+  border: none;
+  background: transparent;
+  z-index: 2;
+}
+
+
+
 .checkButton {
-  width: 100% !important;
-  margin-top: 20px !important;
+  width: 60% !important;
+  margin-top: 10px !important;
+  border-radius: 100px !important;
+}
+
+.checkButtonText {
+  font-weight: 500;
 }
 
 .showAnswer {
   position: absolute !important;
   z-index: 2;
-  bottom: 10px;
+  bottom: 100px;
   right: 10px;
 }
 
@@ -36,14 +80,16 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
-::-webkit-input-placeholder { /* Edge */
-  color: #e0e0e0;
+::-webkit-input-placeholder {
+  /* Edge */
+  color: #f2f2f2;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #e0e0e0;
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #f2f2f2;
 }
 
 ::placeholder {
-  color: #e0e0e0;
+  color: #f2f2f2;
 }

@@ -5,10 +5,9 @@
   align-items: center;
   padding: 10px;
   box-sizing: border-box;
-  background-color: #FFF !important;
-  color: #3f51b5 !important;
-  border-radius: 0 !important;
-  font-weight: bold;
+  background-color: #041641;
+  color: #F2F2F2 ;
+  border-radius: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
   overflow-y: auto;
@@ -16,16 +15,19 @@
 
 .value {
   flex:1;
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
+  color: #ffc400;
 }
 
 .hint {
   flex: 5;
+  font-size: 14px;
 }
 
 ul {
   padding-left: 10px;
+  line-height: 18px;
 }
 
 li {

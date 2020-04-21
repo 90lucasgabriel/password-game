@@ -10,20 +10,38 @@ import { store } from './redux/Store';
 import AnswerList from './components/AnswerList';
 import AdSense from 'react-adsense';
 
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+import { purple } from '@material-ui/core/colors';
+import Keyboard from './components/Keyboard';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#041641',
+    },
+    secondary: {
+      main: '#ffc400',
+    },
+  },
+});
+
 function App() {
   useEffect(() => {}, []);
 
   return (
     <Provider store={store}>
-      <div className='appWrapper'>
-        <div className='app'>
-          <Header className='header' />
-          <Password className='password' />
-          <div className='hints'>
-            <AnswerList />
+      <ThemeProvider theme={theme}>
+        <div className='appWrapper'>
+          <div className='app'>
+            <Header className='header' />
+            <Password className='password' />
+            <div className='hints'>
+              <AnswerList />
+            </div>
+          <Keyboard />
           </div>
         </div>
-      </div>
+      </ThemeProvider>
     </Provider>
   );
 }

@@ -1,20 +1,44 @@
 import React from 'react';
-import { Paper } from '@material-ui/core';
+import { div } from '@material-ui/core';
 
 import './style.css';
 
 function Answer({ value, right, wrongPosition, wrong }) {
+  const rightSentence = () => {
+    return right > 1
+      ? `${right} números certos nos lugares certos.`
+      : `${right} número certo no lugar certo.`;
+  };
+
+  const wrongPositionSentence = () => {
+    return wrongPosition > 1
+      ? `${wrongPosition} números certos em lugares errados.`
+      : `${wrongPosition} número certo em lugar errado.`;
+  };
+
+  const wrongSentence = () => {
+    return wrong > 1 ? `${wrong} números errados.` : `${wrong} número errado.`;
+  };
+
   return (
-    <Paper className='result' elevation={3}>
-      <div className='value'>{value}</div>
+    <div className='result'>
+      <div className='value' color='secondary'>
+        {value}
+      </div>
       <div className='hint'>
         <ul>
-          <li>{right} número(s) certo(s) no lugar certo.</li>
-          <li>{wrongPosition} número(s) certo(s) no lugar errado.</li>
-          <li>{wrong} número(s) errado(s).</li>
+          <li>
+            {rightSentence()}
+          </li>
+          <li>
+            {wrongPositionSentence()}
+          </li>
+          <li>
+            {wrongSentence()}
+          </li>
         </ul>
       </div>
-    </Paper>
+    </div>
   );
 }
 
