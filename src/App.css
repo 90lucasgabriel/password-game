@@ -24,3 +24,9 @@
   overflow: hidden;
   box-sizing: border-box;
 }
+
+.adsense {
+  flex: none;
+  height: 50px;
+  width: 100%;
+}

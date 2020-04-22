@@ -12,6 +12,8 @@ import AnswerList from './components/AnswerList';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import Keyboard from './components/Keyboard';
 
+import AdSense from 'react-adsense';
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -65,6 +67,15 @@ function App() {
             <Password />
             <AnswerList />
             <Keyboard />
+            <div className='adsense'>
+              <AdSense.Google
+                client='pub-2971125408438929'
+                slot='6548491583'
+                style={{ width: 500, height: 50, float: 'left' }}
+                format=''
+                responsive='true'
+              />
+            </div>
           </div>
         </div>
       </ThemeProvider>
