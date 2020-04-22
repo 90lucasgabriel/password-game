@@ -7,8 +7,7 @@ export const AddAnswer = ({ answers, currentValue, password }) => {
 
   if (currentValue.length === 3) {
     if (answers.find((a) => a.value === currentValue)) {
-      alert('Essa senha já foi inserida.');
-      return;
+      return 'duplicated'; // throw
     }
   }
 

@@ -1,5 +1,12 @@
-import React from 'react';
-import { Button } from '@material-ui/core';
+import React, { useState } from 'react';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@material-ui/core';
 import BackspaceOutlinedIcon from '@material-ui/icons/BackspaceOutlined';
 import CheckCircleOutlineOutlinedIcon from '@material-ui/icons/CheckCircleOutlineOutlined';
 
@@ -42,8 +49,13 @@ function Keyboard() {
     });
 
     if (result) {
+      if (result === 'duplicated') {
+        showDuplicated();
+        return;
+      }
+
       if (result.right === 3) {
-        alert(`Parabéns!! Você acertou em ${answers.length} tentativas`);
+        showCongratulations();
         return dispatch(gameOverAction(true));
       }
 
@@ -63,6 +75,29 @@ function Keyboard() {
     }
 
     return dispatch(addValueAction(value));
+  };
+
+  // Alert Dialog
+  const [open, setOpen] = useState(false);
+  const [dialogTitle, setDialogTitle] = useState('');
+  const [dialogDescription, setDialogDescription] = useState('');
+
+  const showDuplicated = () => {
+    setDialogTitle('');
+    setDialogDescription('Essa senha já foi inserida.');
+    setOpen(true);
+  };
+
+  const showCongratulations = () => {
+    setDialogTitle(`Senha Correta: ${password}`);
+    setDialogDescription(
+      `Parabéns!! Você acertou em ${answers.length} tentativas`
+    );
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -125,6 +160,25 @@ function Keyboard() {
           <CheckCircleOutlineOutlinedIcon />
         </Button>
       </div>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
+      >
+        <DialogTitle id='alert-dialog-title'>{dialogTitle}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id='alert-dialog-description'>
+            {dialogDescription}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color='primary' autoFocus>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

@@ -1,7 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Button, Fab } from '@material-ui/core';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Fab,
+} from '@material-ui/core';
 import {
   resetAnswerAction,
   addPasswordAction,
@@ -22,7 +30,7 @@ const Password = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  const { list: answers, value: currentValue } = useSelector(
+  const { list: answers, value: currentValue, password } = useSelector(
     (state) => state.answer
   );
   const { gameOver } = useSelector((state) => state.game);
@@ -43,8 +51,13 @@ const Password = () => {
     });
 
     if (result) {
+      if (result === 'duplicated') {
+        showDuplicated();
+        return;
+      }
+
       if (result.right === 3) {
-        alert(`Parabéns!! Você acertou em ${answers.length} tentativas`);
+        showCongratulations();
         return dispatch(gameOverAction(true));
       }
 
@@ -63,6 +76,29 @@ const Password = () => {
     userPassword = PasswordService.PasswordGenerate(3);
     addAnswer(userPassword);
   }
+
+  // Alert Dialog
+  const [open, setOpen] = useState(false);
+  const [dialogTitle, setDialogTitle] = useState('');
+  const [dialogDescription, setDialogDescription] = useState('');
+
+  const showDuplicated = () => {
+    setDialogTitle('');
+    setDialogDescription('Essa senha já foi inserida.');
+    setOpen(true);
+  };
+
+  const showCongratulations = () => {
+    setDialogTitle(`Senha Correta: ${password}`);
+    setDialogDescription(
+      `Parabéns!! Você acertou em ${answers.length} tentativas`
+    );
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     if (answers.length === 0) {
@@ -101,6 +137,25 @@ const Password = () => {
 
         <div className='topBackground'></div>
       </div>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
+      >
+        <DialogTitle id='alert-dialog-title'>{dialogTitle}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id='alert-dialog-description'>
+            {dialogDescription}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color='primary' autoFocus>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       {gameOver ? (
         <Fab
