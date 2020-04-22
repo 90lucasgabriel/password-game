@@ -71,7 +71,7 @@ function App() {
               <AdSense.Google
                 client='pub-2971125408438929'
                 slot='6548491583'
-                style={{ width: 500, height: 50, float: 'left' }}
+                style={{ width: 468, height: 60, float: 'left' }}
                 format=''
                 responsive='true'
               />

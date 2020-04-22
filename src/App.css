@@ -27,6 +27,7 @@
 
 .adsense {
   flex: none;
-  height: 50px;
+  height: 60px;
+  background-color: #FFF;
   width: 100%;
 }
