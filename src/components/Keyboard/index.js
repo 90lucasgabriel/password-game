@@ -101,66 +101,67 @@ function Keyboard() {
   };
 
   return (
-    <div className='keyboardWrapper'>
-      <div className='keyboardActionWrapper keyboardActionLeft'>
-        <Button
-          className='keyboardAction'
-          color='secondary'
-          variant='contained'
-          size='large'
-          onClick={resetValue}
-        >
-          <BackspaceOutlinedIcon />
-        </Button>
-      </div>
-
-      <div className='keyboardNumberWrapper'>
-        <div className='keyboardNumberRowWrapper'>
-          {values[0].map((value) => {
-            return (
-              <Button
-                className='keyboardNumber'
-                color='secondary'
-                variant='contained'
-                size='large'
-                key={value}
-                onClick={(e) => addValue(value)}
-              >
-                {value}
-              </Button>
-            );
-          })}
+    <>
+      <div className='keyboardWrapper'>
+        <div className='keyboardActionWrapper keyboardActionLeft'>
+          <Button
+            className='keyboardAction'
+            color='secondary'
+            variant='contained'
+            size='large'
+            onClick={resetValue}
+          >
+            <BackspaceOutlinedIcon />
+          </Button>
         </div>
-        <div className='keyboardNumberRowWrapper'>
-          {values[1].map((value) => {
-            return (
-              <Button
-                className='keyboardNumber'
-                color='secondary'
-                variant='contained'
-                size='large'
-                key={value}
-                onClick={(e) => addValue(value)}
-              >
-                {value}
-              </Button>
-            );
-          })}
+
+        <div className='keyboardNumberWrapper'>
+          <div className='keyboardNumberRowWrapper'>
+            {values[0].map((value) => {
+              return (
+                <Button
+                  className='keyboardNumber'
+                  color='secondary'
+                  variant='contained'
+                  size='large'
+                  key={value}
+                  onClick={(e) => addValue(value)}
+                >
+                  {value}
+                </Button>
+              );
+            })}
+          </div>
+          <div className='keyboardNumberRowWrapper'>
+            {values[1].map((value) => {
+              return (
+                <Button
+                  className='keyboardNumber'
+                  color='secondary'
+                  variant='contained'
+                  size='large'
+                  key={value}
+                  onClick={(e) => addValue(value)}
+                >
+                  {value}
+                </Button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className='keyboardActionWrapper keyboardActionRight'>
+          <Button
+            className='keyboardAction'
+            color='secondary'
+            variant='contained'
+            size='large'
+            onClick={addAnswer}
+          >
+            <CheckCircleOutlineOutlinedIcon />
+          </Button>
         </div>
       </div>
-
-      <div className='keyboardActionWrapper keyboardActionRight'>
-        <Button
-          className='keyboardAction'
-          color='secondary'
-          variant='contained'
-          size='large'
-          onClick={addAnswer}
-        >
-          <CheckCircleOutlineOutlinedIcon />
-        </Button>
-      </div>
-
       <Dialog
         open={open}
         onClose={handleClose}
@@ -179,7 +180,7 @@ function Keyboard() {
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   );
 }
 

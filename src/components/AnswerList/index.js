@@ -9,7 +9,7 @@ function AnswerList() {
   const answers = useSelector((state) => state.answer.list);
 
   return (
-    <>
+    <div className='answerListWrapper'>
       {answers.map((answer, index) => (
         <div key={answer.value} className='answerWrapper'>
           <Badge
@@ -20,7 +20,7 @@ function AnswerList() {
           <Answer {...answer} />
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

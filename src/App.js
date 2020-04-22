@@ -79,11 +79,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <div className='appWrapper'>
           <div className='app'>
-            <Header className='header' />
-            <Password className='password' />
-            <div className='hints'>
-              <AnswerList />
-            </div>
+            <Header />
+            <Password />
+            <AnswerList />
             <Keyboard />
           </div>
         </div>
