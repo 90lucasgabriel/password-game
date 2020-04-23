@@ -40,14 +40,10 @@ const Password = () => {
       return;
     }
 
-    const { list: answers, value, password: passwordState } = state.answer;
-    let val = userValue || value;
-    let pas = newPassword || passwordState;
-
     const result = PasswordService.AddAnswer({
-      password: pas,
+      password: newPassword || password,
       answers,
-      currentValue: val,
+      currentValue: userValue || currentValue,
     });
 
     if (result) {
