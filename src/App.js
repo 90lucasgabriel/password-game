@@ -69,9 +69,9 @@ function App() {
             <Keyboard />
             <div className='adsense'>
               <AdSense.Google
-                client='pub-2971125408438929'
-                style={{ width: 468, height: 60, float: 'left' }}
-                format='landscape'
+                client='ca-pub-2971125408438929'
+                style={{ height: 60, display: 'block' }}
+                format=''
                 responsive='true'
               />
             </div>
