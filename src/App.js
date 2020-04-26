@@ -70,6 +70,7 @@ function App() {
             <div className='adsense'>
               <AdSense.Google
                 client='ca-pub-2971125408438929'
+                slot='4761598559'
                 style={{ height: 60, display: 'block' }}
                 format=''
                 responsive='true'

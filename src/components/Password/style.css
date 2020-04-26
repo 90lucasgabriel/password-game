@@ -70,7 +70,7 @@
 .showAnswer {
   position: absolute !important;
   z-index: 2;
-  bottom: 110px;
+  bottom: 175px;
   right: 10px;
 }
 
