@@ -13,13 +13,13 @@ const AnswerList = () => {
     (answer) => answer.value,
     {
       from: {
-        transform: 'translate3d(0,-75px,0)',
-        opacity: 0,
-        height: 20,
+        // transform: 'translate3d(0,-85px,0)',
+        opacity: 1,
+        height: 0,
       },
-      enter: { transform: 'translate3d(0,0,0)', height: 75, opacity: 1 },
-      leave: { transform: 'translateX(300px)', opacity: 0 },
-      trail: 10,
+      enter: { transform: 'translate3d(0,0,0)', height: 85, opacity: 1 },
+      leave: { transform: 'translate3d(0, -85px, 0)', height: 0, opacity: 0 },
+
     }
   );
 

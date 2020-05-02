@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './style.css';
-import { Container } from './styles';
+import { Container, ContainerWrapper } from './styles';
 import { Badge } from '@material-ui/core';
 
 const Answer = ({ value, right, wrongPosition, wrong, style, index }) => {
@@ -22,19 +22,23 @@ const Answer = ({ value, right, wrongPosition, wrong, style, index }) => {
   };
 
   return (
-    <Container style={style}>
-      <div className='badge' color='secondary' >{index}</div>
-      <div className='value' color='secondary'>
-        {value}
-      </div>
-      <div className='hint'>
-        <ul>
-          <li>{rightSentence()}</li>
-          <li>{wrongPositionSentence()}</li>
-          <li>{wrongSentence()}</li>
-        </ul>
-      </div>
-    </Container>
+    <ContainerWrapper  style={style}>
+      <Container>
+        <div className='badge' color='secondary'>
+          {index}
+        </div>
+        <div className='value' color='secondary'>
+          {value}
+        </div>
+        <div className='hint'>
+          <ul>
+            <li>{rightSentence()}</li>
+            <li>{wrongPositionSentence()}</li>
+            <li>{wrongSentence()}</li>
+          </ul>
+        </div>
+      </Container>
+    </ContainerWrapper>
   );
 };
 

@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 import { animated } from 'react-spring';
 
-export const Container = styled(animated.div)`
+export const ContainerWrapper = styled(animated.div)`
+  overflow: hidden;
+`;
+
+export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -17,7 +21,8 @@ export const Container = styled(animated.div)`
   border-radius: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
-  overflow-y: auto;
+  height: 75px;
+  overflow-y: hidden;
   position: relative;
 
   div.badge {
