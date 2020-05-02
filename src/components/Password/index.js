@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -28,41 +28,52 @@ var newPassword = '';
 var userPassword = '';
 const Password = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  // const state = useSelector((state) => state);
 
   const { list: answers, value: currentValue, password } = useSelector(
     (state) => state.answer
   );
   const { gameOver } = useSelector((state) => state.game);
 
-  function addAnswer(userValue) {
-    if (gameOver) {
-      return;
-    }
+  const showCongratulations = useCallback(() => {
+    setDialogTitle(`Senha Correta: ${password}`);
+    setDialogDescription(
+      `Parabéns!! Você acertou em ${answers.length} tentativas`
+    );
+    setOpen(true);
+  }, [answers, password]);
 
-    const result = PasswordService.AddAnswer({
-      password: newPassword || password,
-      answers,
-      currentValue: userValue || currentValue,
-    });
-
-    if (result) {
-      if (result === 'duplicated') {
-        showDuplicated();
+  const addAnswer = useCallback(
+    (userValue) => {
+      if (gameOver) {
         return;
       }
 
-      if (result.right === 3) {
-        showCongratulations();
-        return dispatch(gameOverAction(true));
+      const result = PasswordService.AddAnswer({
+        password: newPassword || password,
+        answers,
+        currentValue: userValue || currentValue,
+      });
+
+      if (result) {
+        if (result === 'duplicated') {
+          showDuplicated();
+          return;
+        }
+
+        if (result.right === 3) {
+          showCongratulations();
+          return dispatch(gameOverAction(true));
+        }
+
+        dispatch(addAnswerAction(result));
+        dispatch(resetValueAction());
       }
+    },
+    [answers, currentValue, dispatch, gameOver, password, showCongratulations]
+  );
 
-      dispatch(addAnswerAction(result));
-      dispatch(resetValueAction());
-    }
-  }
-
-  function newGame() {
+  const newGame = useCallback(() => {
     dispatch(resetAnswerAction());
     dispatch(gameOverAction(false));
 
@@ -71,7 +82,7 @@ const Password = () => {
 
     userPassword = PasswordService.PasswordGenerate(3);
     addAnswer(userPassword);
-  }
+  }, [addAnswer, dispatch]);
 
   // Alert Dialog
   const [open, setOpen] = useState(false);
@@ -84,14 +95,6 @@ const Password = () => {
     setOpen(true);
   };
 
-  const showCongratulations = () => {
-    setDialogTitle(`Senha Correta: ${password}`);
-    setDialogDescription(
-      `Parabéns!! Você acertou em ${answers.length} tentativas`
-    );
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -100,7 +103,7 @@ const Password = () => {
     if (answers.length === 0) {
       newGame();
     }
-  }, [answers]);
+  }, [answers, newGame]);
 
   return (
     <>

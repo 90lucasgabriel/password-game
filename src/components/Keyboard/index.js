@@ -14,6 +14,7 @@ import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addValueAction,
+  removeValueAction,
   resetValueAction,
   addAnswerAction,
 } from '../../redux/actions/AnswerAction';
@@ -33,8 +34,14 @@ function Keyboard() {
   );
   const { gameOver } = useSelector((state) => state.game);
 
-  const resetValue = () => {
-    return dispatch(resetValueAction());
+  // const resetValue = () => {
+  //   return dispatch(resetValueAction());
+  // };
+
+  const removeValue = () => {
+    if (currentValue.length > 0) {
+      return dispatch(removeValueAction(currentValue));
+    }
   };
 
   const addAnswer = () => {
@@ -109,7 +116,7 @@ function Keyboard() {
             color='secondary'
             variant='contained'
             size='large'
-            onClick={resetValue}
+            onClick={removeValue}
           >
             <BackspaceOutlinedIcon />
           </Button>

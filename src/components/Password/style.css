@@ -69,8 +69,10 @@
 
 .showAnswer {
   position: absolute !important;
+  
   z-index: 2;
-  bottom: 175px;
+  /* bottom: 175px; */
+  bottom: 110px;
   right: 10px;
 }
 

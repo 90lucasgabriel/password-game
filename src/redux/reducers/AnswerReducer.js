@@ -22,6 +22,13 @@ export default function reducer(
       };
     }
 
+    case 'REMOVE_VALUE': {
+      return {
+        ...state,
+        value: action.payload.substring(0, action.payload.length - 1),
+      };
+    }
+
     case 'ADD_PASSWORD': {
       return {
         ...state,

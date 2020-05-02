@@ -1,8 +1,9 @@
 export const ADD_PASSWORD = 'ADD_PASSWORD';
-export const ADD_VALUE = 'ADD_VALUE';
-export const ADD_ANSWER = 'ADD_ANSWER';
-export const GAME_OVER = 'GAME_OVER';
-export const RESET_VALUE = 'RESET_VALUE';
+export const ADD_VALUE    = 'ADD_VALUE';
+export const ADD_ANSWER   = 'ADD_ANSWER';
+export const REMOVE_VALUE = 'REMOVE_VALUE';
+export const GAME_OVER    = 'GAME_OVER';
+export const RESET_VALUE  = 'RESET_VALUE';
 export const RESET_ANSWER = 'RESET_ANSWER';
 
 export function addPasswordAction(data) {
@@ -11,6 +12,10 @@ export function addPasswordAction(data) {
 
 export function addValueAction(data) {
   return { type: ADD_VALUE, payload: data };
+}
+
+export function removeValueAction(data) {
+  return { type: REMOVE_VALUE, payload: data };
 }
 
 export function addAnswerAction(data) {
@@ -28,4 +33,3 @@ export function resetValueAction() {
 export function resetAnswerAction() {
   return { type: RESET_ANSWER };
 }
-

@@ -11,6 +11,7 @@ import AnswerList from './components/AnswerList';
 
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import Keyboard from './components/Keyboard';
+import GlobalStyle from './styles/global';
 
 import AdSense from 'react-adsense';
 
@@ -79,6 +80,7 @@ function App() {
           </div>
         </div>
       </ThemeProvider>
+      <GlobalStyle />
     </Provider>
   );
 }
