@@ -1,9 +1,10 @@
 import React from 'react';
-import { div } from '@material-ui/core';
 
 import './style.css';
+import { Container } from './styles';
+import { Badge } from '@material-ui/core';
 
-function Answer({ value, right, wrongPosition, wrong }) {
+const Answer = ({ value, right, wrongPosition, wrong, style, index }) => {
   const rightSentence = () => {
     return right > 1
       ? `${right} números certos nos lugares certos.`
@@ -21,25 +22,20 @@ function Answer({ value, right, wrongPosition, wrong }) {
   };
 
   return (
-    <div className='result'>
+    <Container style={style}>
+      <div className='badge' color='secondary' >{index}</div>
       <div className='value' color='secondary'>
         {value}
       </div>
       <div className='hint'>
         <ul>
-          <li>
-            {rightSentence()}
-          </li>
-          <li>
-            {wrongPositionSentence()}
-          </li>
-          <li>
-            {wrongSentence()}
-          </li>
+          <li>{rightSentence()}</li>
+          <li>{wrongPositionSentence()}</li>
+          <li>{wrongSentence()}</li>
         </ul>
       </div>
-    </div>
+    </Container>
   );
-}
+};
 
 export default Answer;

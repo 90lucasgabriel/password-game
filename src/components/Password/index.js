@@ -15,6 +15,7 @@ import {
   addPasswordAction,
   resetValueAction,
   addAnswerAction,
+  addValueAction,
 } from '../../redux/actions/AnswerAction';
 import { gameOverAction } from '../../redux/actions/GameAction';
 
@@ -29,6 +30,8 @@ var userPassword = '';
 const Password = () => {
   const dispatch = useDispatch();
   // const state = useSelector((state) => state);
+
+  const [randomCurrentValue, setRandomCurrentValue] = useState('');
 
   const { list: answers, value: currentValue, password } = useSelector(
     (state) => state.answer
@@ -80,8 +83,29 @@ const Password = () => {
     newPassword = PasswordService.PasswordGenerate(3);
     dispatch(addPasswordAction(newPassword));
 
-    userPassword = PasswordService.PasswordGenerate(3);
-    addAnswer(userPassword);
+    // const randomValues = [];
+    // for (let i = 0; i < 30; i++) {
+    //   randomValues.push(PasswordService.PasswordGenerate(3));
+    // }
+
+    // let j = 0;
+    // const timer = setInterval(() => {
+    //   // userPassword = '';
+    //   if (j >= 29) {
+    //     clearInterval(timer);
+    //     dispatch(resetValueAction());
+    //   }
+
+    //   setRandomCurrentValue(randomValues[j]);
+    //   console.log('timer -> userPassword', userPassword);
+
+    //   j++;
+    // }, 100);
+
+    // setTimeout(() => {
+      userPassword = PasswordService.PasswordGenerate(3);
+      addAnswer(userPassword);
+    // }, 200 * 30);
   }, [addAnswer, dispatch]);
 
   // Alert Dialog

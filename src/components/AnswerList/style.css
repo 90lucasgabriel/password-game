@@ -6,20 +6,10 @@
   padding-right: 20px;
   padding-left: 20px;
   box-sizing: border-box;
+  position: relative;
 }
 
 
 ul {
   margin: 0;
-}
-
-.answerWrapper {
-  position: relative;
-  margin-bottom: 10px;
-}
-
-.badge {
-  position: absolute !important;
-  right: 15px;
-  top: 15px;
 }
